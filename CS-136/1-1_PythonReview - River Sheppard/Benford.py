@@ -6,12 +6,16 @@
 #and creates a list that counts the number of times each digit occurs in the given position
 #and then it prints a formated display of the data
 #Results:
-#LibraryBooks.txt, is definitly similar to the Benford, because it is a limited
-#data set it is not a great match, but the data mostly follows the rule excepting 8s which
-#which occur more often than 7s
-#LiveJournal.txt, doesn't really fit with the Benford rule, it decreases too much by the 2s
-#and then it starts to grow at the end again which is a clear deviation from the rule.
-#SunSpots.txt, includes zero which is not allowed for by the rule.
+#LibraryBooks.txt, [0, 3056, 1606, 1018, 801, 640, 560, 502, 503, 452]
+#Is definitly similar to the Benford distribution, because it is a limited data set it is
+#not a great match, but the data mostly follows the rule excepting 8s which which occur more
+#often than 7s
+#LiveJournal.txt, [0, 982, 276, 30, 38, 50, 91, 94, 121, 197]
+#Doesn't really fit with the Benford rule, it decreases too much by the 2s and then it
+#starts to grow at the end again which is a clear deviation from the rule.
+#SunSpots.txt, [87, 868, 369, 307, 318, 305, 257, 193, 196, 173]
+#Includes zero which is not allowed for by the rule although the rest of the data looks
+#pretty good.
 #
 
 import sys
