@@ -35,9 +35,9 @@ class Graph:
     #Finds the number with which to scale the y-axis
     def graphHeight(self, num):
         intLen = self.intLength(num)
-        height = 5 * pow(10,intLen-1)
-        if num > height:
-            height = pow(10,intLen)
+        height = 2 * pow(10,intLen-1)
+        while num > height:
+            height += pow(10,intLen-1)
         return height
 
     #Draws the blank graph before any data in used
@@ -142,7 +142,7 @@ if __name__ == "__main__":
     digit = int(sys.argv[1])
     fName = sys.argv[2]
     size = int(sys.argv[3])
-    size = 600
+    #size = 600
     graph = Graph()
     ben = Benford.Benford()
     nums = ben.nthDigitTally(digit, ben.readMysteriousNumbers(fName))
