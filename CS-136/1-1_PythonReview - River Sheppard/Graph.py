@@ -32,7 +32,7 @@ class Graph:
                 greatInt = int
         return greatInt
 
-    #Finds the number with which so scal the y-axis
+    #Finds the number with which to scale the y-axis
     def graphHeight(self, num):
         intLen = self.intLength(num)
         height = 5 * pow(10,intLen-1)
@@ -48,7 +48,6 @@ class Graph:
 
         StdDraw.line(50,50,50,550)
         StdDraw.line(50,50,550,50)
-        StdDraw.text(25,50, "0")
         
         StdDraw.line(45,550,55,550)
         StdDraw.line(48,425,52,425)
@@ -78,41 +77,76 @@ class Graph:
         StdDraw.line(550,45,550,55)
         StdDraw.show(0.0)
 
-    #Calls the graph and then adds the data points
-    def graphing(self, intList):
-        self.graphDraw()
+    def advDraw(self, size, listSize):
+        graphSize = size - 100
+        xSplit = graphSize/listSize
 
+        StdDraw.setCanvasSize(size,size)
+        StdDraw.setXscale(0,size)
+        StdDraw.setYscale(0,size)
+
+        StdDraw.line(50,50,50,size - 50)
+        StdDraw.line(50,50,size - 50,50)
+
+        StdDraw.line(45,size - 50,55,size - 50)
+        StdDraw.line(48,3*graphSize/4+50,52,3*graphSize/4+50)
+        StdDraw.line(45,graphSize/2+50,55,graphSize/2+50)
+        StdDraw.line(48,graphSize/4+50,52,graphSize/4+50)
+
+        for i in range(0,listSize):
+            posX = 50 + xSplit * (i + 0.5)
+            StdDraw.line(posX,48,posX,52)
+            StdDraw.text(posX,25, str(i))
+
+        StdDraw.line(size - 50,45,size - 50,55)
+        StdDraw.show(0.0)
+
+    #Calls the graph and then adds the data points
+    def graphing(self, size, intList):
+        listSize = len(intList)
+        if size < 20 * listSize + 100:
+            size = 20 * listSize + 100
+
+        self.advDraw(size, listSize)
+
+        graphSize = size - 100
         height = self.graphHeight(self.greatestInt(intList))
+        width = graphSize/len(intList)
 
         if height >= 100:
-            StdDraw.text(25,550, str(height))
-            StdDraw.text(25,425, str(int(3*height/4)))
-            StdDraw.text(25,300, str(int(height/2)))
-            StdDraw.text(25,175, str(int(height/4)))
+            StdDraw.text(25,size - 50, str(height))
+            StdDraw.text(25,3*graphSize/4+50, str(int(3*height/4)))
+            StdDraw.text(25,graphSize/2+50, str(int(height/2)))
+            StdDraw.text(25,graphSize/4+50, str(int(height/4)))
         else:
-            StdDraw.text(25,550, str(height))
-            StdDraw.text(25,425, str(3*height/4))
-            StdDraw.text(25,300, str(height/2))
-            StdDraw.text(25,175, str(height/4)) 
+            StdDraw.text(25,size - 50, str(height))
+            StdDraw.text(25,3*graphSize/4+50, str(3*height/4))
+            StdDraw.text(25,graphSize/2+50, str(height/2))
+            StdDraw.text(25,graphSize/4+50, str(height/4))
+        StdDraw.text(25,50, "0")
         
         for i in range(0,len(intList)):
             StdDraw.setPenColor(StdDraw.BLUE)
-            posX = 50 * (i + 1)
-            posY = intList[i] / height * 500 + 75
-            stretch = intList[i]/height * 500
-            StdDraw.filledRectangle(posX,50,50,stretch)
+            posX = 50 + width * i
+            posY = intList[i] / height * graphSize + 75
+            stretch = intList[i]/height * graphSize
+            StdDraw.filledRectangle(posX,50,width,stretch)
             StdDraw.setPenColor(StdDraw.BLACK)
-            StdDraw.rectangle(posX,50,50,stretch)
-            StdDraw.text(posX + 25,posY, str(intList[i]))
+            StdDraw.rectangle(posX,50,width,stretch)
+            StdDraw.text(posX + width/2,posY, str(intList[i]))
         StdDraw.show(0.0)
 
 
 
 if __name__ == "__main__":
+    digit = int(sys.argv[1])
+    fName = sys.argv[2]
+    size = int(sys.argv[3])
+    size = 600
     graph = Graph()
     ben = Benford.Benford()
-    nums = ben.nthDigitTally(int(sys.argv[1]), ben.readMysteriousNumbers(sys.argv[2]))
-    graph.graphing(nums)
+    nums = ben.nthDigitTally(digit, ben.readMysteriousNumbers(fName))
+    graph.graphing(size, nums)
 
 
 
