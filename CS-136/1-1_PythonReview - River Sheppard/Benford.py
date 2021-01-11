@@ -97,6 +97,7 @@ class Benford:
             count = int(f.readline())
             for i in range(0,count):
                 nums.append(int(f.readline()))
+        f.close()
         return nums
 
 #Runs nthDigitTally based on the system arguments and then prints the tally out in a
