@@ -134,8 +134,11 @@ class Graph:
             StdDraw.setPenColor(StdDraw.BLACK)
             StdDraw.rectangle(posX,50,width,stretch)
             StdDraw.text(posX + width/2,posY, str(intList[i]))
-        StdDraw.show(0.0)
-
+        graphTime = True
+        while graphTime:
+            StdDraw.show(10)
+            if StdDraw.hasNextKeyTyped():
+                graphTime = False
 
 
 if __name__ == "__main__":

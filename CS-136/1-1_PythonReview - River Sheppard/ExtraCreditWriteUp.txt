@@ -1,0 +1,7 @@
+River Sheppard
+Extra Credit Write-up
+URL: https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population (I know that this is wkipedia, but the accuracy of the data doesn't really matter, it is just a large enough data set that I can test with.
+
+This data set almost perfectly matches the Benford rule, there are some issues, but that is because it is a limited data set, if there was a larger data set it looks like it would end up perfect as the only issues are when it gets to the low frequency numbers there are some flutters like how 8s are more frequent than 7s.
+
+Additionally, not connected to the extra credit assignment I wrote a script that can dynamically make a box graph when fed a list of integers which provided a better way to look at the data. It uses StdDraw.py and I have it set up using Benford.py although it could theoretically work with any list.
