@@ -1,7 +1,11 @@
 #
 #River Sheppard
 #Lab 2: Linked Lists
-#Description
+#Description: Creates a class that forms a linked list of nodes and then has
+#three different ways to add new nodes to the list, first by sorting nodes in
+#order that they were added to the list, the next method sorts them so that new
+#points get added after the node they're nearest to, the third method sorts them
+#so that the new point adds the smallest amount of distance to the tour
 #
 
 import Point
