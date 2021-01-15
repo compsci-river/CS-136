@@ -9,6 +9,7 @@
 #
 
 import Point
+import StdDraw
 
 #A node class is used to define the linked list, it contains a Point and a Node pointing to the next in the list
 class Node:
@@ -154,40 +155,41 @@ class Tour:
             newNode.next = minNode.next
             minNode.next = newNode
 
-    def remove(self, node):
-        testNode = node.next
-        while testNode != node:
-            testNode = testNode.next
-        testNode.next = node.next
-        if node = self.start:
-            node.next = self.start
+    def list(self, p, tourList):
+        newNode = Node()
+        newNode.p = p
+        tourList.append(newNode)
+        return tourList
 
     def farthest(self, nodeList):
-        localNode = self.start
-        guestNode = nodeList.start
+        localNode = self.start.next
         farDist = 0.0
-        newNode = nodeList.start
-        loopOne = True
-        loopTwo = True
-        while loopOne:
-            while loopTwo:
-                dist = localNode.p.distanceTo(guestNode.p)
-                if dist > farDist:
-                    fardist = dist
-                    newNode = guestNode
+        index = None
+        for i in range(0,len(nodeList)):
+            testDist = nodeList[i].p.distanceTo(self.start.p)
+            if testDist > farDist:
+                farDist = testDist
+                index = i
+            while localNode != self.start:
+                testDist = nodeList[i].p.distanceTo(self.start.p)
+                if testDist > farDist:
+                    farDist = testDist
+                    index = i
                 localNode = localNode.next
-                if localNode == self.start:
-                    loopTwo = False
-            guestNode = guestNode.next
-            if guestNode == nodeList.start:
-                loopOne = False
-        return newNode
+        return index
 
     def farthestInsertion(self, nodeList):
-        while nodeList.size() > 0:
-            newNode = self.farthest(nodeList)
-            self.insertSmallest(newNode.p)
-            self.remove(newNode)
+        newNode = nodeList[0]
+        self.start = newNode
+        newNode.next = self.start
+        del nodeList[0]
+        while len(nodeList) > 0:
+            StdDraw.clear()
+            newNodeIndex = self.farthest(nodeList)
+            self.insertSmallest(nodeList[newNodeIndex].p)
+            self.draw()
+            StdDraw.show(1)
+            del nodeList[newNodeIndex]
                 
 
 
