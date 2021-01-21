@@ -155,42 +155,67 @@ class Tour:
             newNode.next = minNode.next
             minNode.next = newNode
 
-    def list(self, p, tourList):
-        newNode = Node()
-        newNode.p = p
-        tourList.append(newNode)
-        return tourList
+    def altDist(self, nodeOne, nodeTwo, tourList):
+        oldDist = 0.0
+        newDist = 0.0
+        node = tourList.start
+        print("a")
+        while node.next != nodeTwo:
+            node = node.next
+        oldDist += node.p.distanceTo(nodeOne.p)
+        oldDist += nodeOne.p.distanceTo(nodeOne.next.p)
+        newDist += node.p.distanceTo(nodeTwo.p)
+        newDist += nodeTwo.p.distanceTo(nodeOne.next.p)
 
-    def farthest(self, nodeList):
-        localNode = self.start.next
-        farDist = 0.0
-        index = None
-        for i in range(0,len(nodeList)):
-            testDist = nodeList[i].p.distanceTo(self.start.p)
-            if testDist > farDist:
-                farDist = testDist
-                index = i
-            while localNode != self.start:
-                testDist = nodeList[i].p.distanceTo(self.start.p)
-                if testDist > farDist:
-                    farDist = testDist
-                    index = i
-                localNode = localNode.next
-        return index
+        while node.next != nodeTwo:
+            node = node.next
+        oldDist += node.p.distanceTo(nodeTwo.p)
+        oldDist += nodeTwo.p.distanceTo(nodeTwo.next.p)
+        newDist += node.p.distanceTo(nodeOne.p)
+        newDist += nodeOne.p.distanceTo(nodeTwo.next.p)
 
-    def farthestInsertion(self, nodeList):
-        newNode = nodeList[0]
-        self.start = newNode
-        newNode.next = self.start
-        del nodeList[0]
-        while len(nodeList) > 0:
-            StdDraw.clear()
-            newNodeIndex = self.farthest(nodeList)
-            self.insertSmallest(nodeList[newNodeIndex].p)
-            self.draw()
-            StdDraw.show(1)
-            del nodeList[newNodeIndex]
-                
+        distance = oldDist - newDist
+
+        print(str(oldDist))
+        print(str(newDist))
+
+        if newDist < oldDist:
+            print("true")
+            return True
+        else:
+            return False
+
+    def cyclePoints(self, tourList):
+        locOne = self.start
+        locTwo = self.start
+
+        cycling = tourList.start.next
+        cyclingOne = tourList.start.next
+
+        while cycling != tourList.start:
+            while cyclingOne != tourList.start:
+                if cycling != cyclingOne:
+                    if self.altDist(cycling, cyclingOne, tourList):
+                        while (locOne.next.p.x != cycling.p.x) and (locOne.next.p.y != cycling.p.y):
+                            locOne = locOne.next
+                        while (locTwo.next.p.x != cyclingOne.p.x) and (locTwo.next.p.y != cyclingOne.p.y):
+                            locTwo = locTwo.next
+                        print("i")
+                        holdOne = locOne.next
+                        holdTwo = locTwo.next
+
+                        holdOne.next = locTwo.next.next
+                        holdTwo.next = locOne.next.next
+
+                        locTwo.next = holdOne
+                        locOne.next = holdTwo
+                cyclingOne = cyclingOne.next
+            cyclingOne = tourList.start.next
+            cycling = cycling.next
+
+                        
+
+                        
 
 
 
