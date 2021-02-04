@@ -31,6 +31,10 @@ def start(n,s):
     recursiveDiamond(n,0,0,s,math.pi/2,0)
     recursiveDiamond(n,0,0,s,math.pi,0)
     recursiveDiamond(n,0,0,s,3*math.pi/2,0)
+    recursiveDiamond(n,-2.25,-2.25,s,math.pi/4,0)
+    recursiveDiamond(n,2.25,-2.25,s,3*math.pi/4,0)
+    recursiveDiamond(n,2.25,2.25,s,5*math.pi/4,0)
+    recursiveDiamond(n,-2.25,2.25,s,7*math.pi/4,0)
 
 def setUp():
     StdDraw.setCanvasSize(768,768)
