@@ -1,13 +1,19 @@
 #
 #River Sheppard
 #Lab 4: Mind Reader
-#Description: A game where the computer tries to guess what the player will choose next between heads and tails. It
-#does so by creating a dictionary where each entry's key is a code of four entrys, and stored there is a list of
-#what the player has choosen after that sequence in the past. Then it forms its guesses based on the patterns it
-#finds
+#Description: A game where the computer tries to guess what the player will choose next
+#between heads and tails. It does so by creating a dictionary where each entry's key is a
+#code of four entrys, and stored there is a list of what the player has choosen after that
+#sequence in the past. Then it forms its guesses based on the patterns it finds
+#Write-up: I lost every single game, I would regularly start ahead, but as the computer
+#learned my patterns it would quickly catch up and pull ahead, which makes sense because
+#the computer is guessing randomly at first until it can match the current pattern with one
+#that I have used before so early on it is just luck whether or not they match, but then it
+#figures out my patterns and wins
 #
 
 import random
+import sys
 
 class MindReader:
     #Constructor, holds the dictionary
@@ -18,9 +24,9 @@ class MindReader:
     #already in the dictionary if it is than it updates the entry with the new player entry, if it is not in the
     #dictionary it creates a new entry based on the player's entry, then it cycles the hashCode list so that it is
     #ready for a new entry
-    #Inputs: List hashCodes, a list that is four long, the first item holds the last four entries, the second holds
+    #Inputs: List[strings] hashCodes, a list that is four long, the first item holds the last four entries, the second holds
     #the last three and so on. String playerGuess, the newest entry by the player
-    #Outputs: List hashCodes, the cycled list ready to have the player entry added
+    #Outputs: List[strings] hashCodes, the cycled list ready to have the player entry added
     def hashUpdate(self, hashCodes, playerGuess):
         hashCode = hashCodes[0]
         values = []
@@ -45,8 +51,8 @@ class MindReader:
         
     #Gets the player input and checks to make sure it is valid, it uses hashUpdate() to update the dictionary and
     #then it adds the player entry to the hashCodes list
-    #Inputs: List hashCodes, the list containing strings defining the previous stretch of player entries
-    #Outputs: List hashCodes, now cycled and updated with the new player entry
+    #Inputs: List[strings] hashCodes, the list containing strings defining the previous stretch of player entries
+    #Outputs: List[strings] hashCodes, now cycled and updated with the new player entry
     def playerEntry(self, hashCodes):
         entry = input("Enter H for heads or T for tails: ").upper()
         while entry != "H" and entry != "T":
@@ -104,9 +110,33 @@ class MindReader:
             print("Computer wins!!!")
         else:
             print("Something went wrong")
+        return [playerPoints, compPoints]
 
 if __name__ == "__main__":
     #runs the program
-    mindReader = MindReader()
-    mindReader.runReader()
+    size = 1
+    if len(sys.argv) > 1:
+        size = int(sys.argv[1])
+    diff = []
+    count = 0
+    playerWins = 0
+    compWins = 0
+    while size > 0:
+        mindReader = MindReader()
+        reader = mindReader.runReader()
+        diff.append(reader[0] - reader[1])
+        count += 1
+        if reader[0] == 25:
+            playerWins += 1
+        else:
+            compWins += 1
+        size -= 1
+    print("Player wins: " + str(playerWins))
+    print("Computer wins: " + str(compWins))
+
+
+
+
+
+        
                 
