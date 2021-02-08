@@ -70,5 +70,5 @@ class Fern:
 
 if __name__ == "__main__":
     fern = Fern()
-    fern.background(20,4,1.15)
+    fern.background(12,4,1.15)
     StdDraw.show(1000)

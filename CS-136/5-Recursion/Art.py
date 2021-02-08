@@ -1,10 +1,11 @@
 #
 #River Sheppard
 #Art
-#Description: Mostly the Heighway Dragon curve, but I save the route that each line segment
-#travels and draw it as well. Then I also gave the option of creating a custom line using
-#StdDraw input. The Heighway Dragon Curve is a famous fractal, where each line segment is
-#turned into a right angle in alternating directions.
+#Description: Mostly the Heighway Dragon curve, but I save the route that each
+#line segment travels and draw it as well. Then I also gave the option of
+#creating a custom line using StdDraw input. The Heighway Dragon Curve is a
+#famous fractal, where each line segment is turned into a right angle in
+#alternating directions.
 #
 
 import sys
