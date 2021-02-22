@@ -1,10 +1,12 @@
 #
 #River Sheppard
-#Cube
+#Thread Zoo
 #
 
 import sys
 import math
+import time
+import random
 import StdDraw
 from color import Color
 
@@ -57,8 +59,26 @@ class Cube:
         self.setUp(5)
         self.cube(5,0,0,5,[bright,shaded,gray])
 
+    def randCol(self):
+        c = Color((int)(random.random() * 255), (int)(random.random() * 255), (int)(random.random() * 255))
+        return c
+
+    def randColors(self):
+        return [self.randCol(),self.randCol(),self.randCol()]
+
+def runCube():
+    c = Cube()
+    while True:
+        x = random.random()
+        y = random.random()
+        cols = c.randColors()
+        size = random.random()/2
+        c.cube(5,x,y,size,cols)
+        StdDraw.show(1)
+        time.sleep(1)
+        
+
 
 if __name__ == "__main__":
-    cube = Cube()
-    cube.background()
-    StdDraw.show(1000)
+    runCube()
+    
