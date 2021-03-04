@@ -1,7 +1,8 @@
 #
 # Author: River Sheppard
 #
-# Description: 
+# Description: Manages the player character, contains their data, a function to
+# draw them and then some getters and setters
 #
 import StdDraw
 from Tile import Tile

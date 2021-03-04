@@ -1,7 +1,9 @@
 # 
 # Author: River Sheppard
 # 
-# Description:
+# Description: Manages the monsters that interact with the player, contains
+# their data, and contains a run function with a while True loop so that the
+# thread runs forever
 #
 
 from enum import Enum, auto
@@ -44,7 +46,9 @@ class Monster:
         ##### YOUR CODE HERE #####
         pass
 
-    #Gets the monster file name based on the input code
+    #Gets the monster file name based on the input code, returns the name of the
+    #file with the picture, I contained it in a list just in case I wanted to do
+    #anything more with the input code
     def codeC(self,c):
         l = [None]
         if c == "SK":

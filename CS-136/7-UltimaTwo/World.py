@@ -1,7 +1,8 @@
 #
-# Author: 
+# Author: River Sheppard
 #
-# Description:
+# Description: Controls the ultima world, reads it in from a file and then
+# manages the player and monsters. Allows the player to interact with the world.
 #
 
 from Tile import Tile
@@ -53,6 +54,9 @@ class World:
         ##### YOUR CODE HERE #####
         pass
 
+
+    #Checks to see if the entered x,y position exists on the grid of tiles
+    #Returns true if it does false if not
     def validPos(self,x,y):
         if x>=0 and x<=self.width-1 and y>=0 and y<=self.height-1:
             return True
@@ -183,6 +187,8 @@ class World:
                         monster.setLocation(x,y)
                         monster.incurDamage(self.tiles[x][y].getDamage())
 
+    #Gets input from handleKey to what would happen if the player moved to that
+    #and then applies those effects
     def avatarMove(self,x,y):
         if self.validPos(x,y):
             if self.tiles[x][y].isPassable():
@@ -195,6 +201,7 @@ class World:
                     self.avatar.setLocation(x,y)
                     self.avatar.incurDamage(self.tiles[x][y].getDamage())
 
+    #Gets the number of monsters remaining and returns it as an int
     def getNumMonsters(self):
         c = 0
         for m in self.mons:

@@ -1,7 +1,9 @@
 #
 # Author: River Sheppard
 #
-# Description: 
+# Description: Creates the tile class which is what creates the world space of
+# the ultima game. allows for the tile to be drawn and contains values about
+# happens when a entity interacts with the tile.
 #
 
 from enum import Enum, auto
