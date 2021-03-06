@@ -2,16 +2,25 @@
 #River Sheppard
 #Crawler
 #
-#Description:
+#Description: Crawls through a website and saves any links to a dictionary, then
+#works recursivly to run through any new links. At the end the dictionary is
+#written to a text file which is the printed to the screen
 #
 
 import re
 import sys
 import urllib.request
 
+import ssl
+
+#Starts the recursive loop and then manages writing the dictionary to a the file
+#Inputs: string pName, the name of the webpage to start the crawl at. int n, the
+#number of levels to crawl through
+#Outputs: null
 def control(pName,n):
     pDict = {}
     pDict = crawl(pName,n,pDict)
+    print("Dictionary created")
     s = ""
     for a in pDict:
         s += a
@@ -21,15 +30,28 @@ def control(pName,n):
     f = open("Links.txt", "w")
     f.write(s)
     f.close()
-
     printFile()
+    pass
 
+#Prints out the contents of the Links.txt file which is where the dictionary is
+#written to
+#Inputs: null
+#Outputs: null
 def printFile():
     f = open("Links.txt", "r")
     print(f.read())
     f.close()
+    pass
 
-
+#A recursive loop that takes a link and then adds any links found on its page to
+#the dictionary, if they are new they get added to the dictionary, if they
+#already exist in the dictionary increases the stored value by one calls itself
+#on the new links
+#Inputs: string pName, the name of the page to open. int n, the number of levels
+#to crawl through. dictionary pDict, a dictionary of page names holding the
+#number of times they are accessed.
+#Outputs: dictionary pDict, a dictionary of page names holding the
+#number of times they are accessed.
 def crawl(pName,n,pDict):
     if n <= 0:
         return pDict
@@ -45,13 +67,19 @@ def crawl(pName,n,pDict):
                 pDict = crawl(a,n-1,pDict) 
     return pDict
 
+#Opens a page runs through it grabs any links and returns them contained in a
+#list.
+#Inputs: string pName, the name of the page to open.
+#Outputs: list[string] links, a list containing the links found on the page
 def scrape(pName):
     #print("scraping")
     links = []
-    s = "href.*?"
+    s = 'href=".*?"'
     p = re.compile(s)
+    
     try:
-        page = urllib.request.urlopen(pName)
+        cxt = ssl.SSLContext()
+        page = urllib.request.urlopen(pName,context=cxt)
         results = str(page.read()).split()
         for a in results:
             if p.match(a):
@@ -61,15 +89,15 @@ def scrape(pName):
                 #s = '".*?'
                 #a= re.sub('".*?','',a)
                 links.append(b)
-            
     except:
-        print("fail on: "+pName)
+        print("Failed to load: "+pName)
         #print("",end = "")
+    print(links)
     return links
 
 
 if __name__ == "__main__":
-    pName = "https://www.google.com/"
+    pName = "https://katie.mtech.edu/classes/csci136/index.php"
     n = 2
     if len(sys.argv) > 1:
         pName = sys.argv[1]
