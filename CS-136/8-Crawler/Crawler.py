@@ -20,7 +20,7 @@ import ssl
 def control(pName,n):
     pDict = {}
     pDict = crawl(pName,n,pDict)
-    print("Dictionary created")
+    #print("Dictionary created")
     s = ""
     for a in pDict:
         s += a
@@ -79,20 +79,15 @@ def scrape(pName):
     
     try:
         cxt = ssl.SSLContext()
-        page = urllib.request.urlopen(pName,context=cxt)
-        results = str(page.read()).split()
-        for a in results:
-            if p.match(a):
-                a = a.replace('href="','')
-                i = a.find('"')
-                b = a[:i]
-                #s = '".*?'
-                #a= re.sub('".*?','',a)
-                links.append(b)
+        page = str(urllib.request.urlopen(pName,context=cxt).read())
+        results = re.findall(p,page)
+        for result in results:
+            a = result.split('"')
+            links.append(a[1])
     except:
         print("Failed to load: "+pName)
         #print("",end = "")
-    print(links)
+    #print(links)
     return links
 
 

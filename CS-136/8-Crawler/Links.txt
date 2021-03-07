@@ -1,4 +1,5 @@
 style.css : 2
+mailto:\' + display + \' <\' + email + \'> : 3
 http://www.mtech.edu : 3
 https://www.mtech.edu/index.html : 1
 _global/_images/favicon.ico : 1
@@ -81,10 +82,10 @@ news/2021/03/03032021.html : 1
 news/2021/02/022520211.html : 1
 news/2021/02/022320212.html : 1
 news/index.html : 2
-calendar/2021/03/volleyball-vs-rocky-mountain-college.html : 1
 calendar/2021/03/volleyball-vs-rocky-mountain-college1.html : 1
 calendar/2021/03/women-empowerment-day.html : 1
 calendar/2021/03/public-lectures-series-rita-colwell.html : 1
+calendar/2021/03/volleyball-vs-msu-northern.html : 1
 calendar/index.html : 2
 calendar-schedules/academic-calendar.html : 1
 /submit-event.html : 1
@@ -394,6 +395,7 @@ slides/17-Inheritance.pdf : 1
 slides/18-DesigningDataTypes.pdf : 1
 slides/19-Exceptions.pdf : 1
 slides/20-Testing.pdf : 1
+slides/21-Testing and Debugging.pdf : 1
 examples/Factors0.bat : 1
 examples/Factors1.bat : 1
 examples/Factors2.bat : 1
@@ -477,6 +479,7 @@ Examples/explosion.wav : 1
 Examples/frog.wav : 1
 https://www.chegg.com/homework-help/questions-and-answers/java-question-https-katiemtechedu-classes-csci135-assign-input-2nd-part-extra-classes-maki-q5532108 : 1
 Slides/12-ProblemDecomposition.pdf : 1
+Slides/16- Methods.pdf : 1
 Examples/MethodJumping.java : 1
 Examples/DiceRolling.java : 1
 Examples/RandomUtil.java : 1
@@ -513,6 +516,7 @@ Examples/Bouncers.java : 1
 Examples/dont_panic_40.png : 1
 Examples/asteroid_big.png : 1
 Slides/Exam_II_Outline.pdf : 1
+Exam 2 Programming Fall 2018.pdf : 1
 Slides/20-ObjectsandReferences.pdf : 1
 Examples/Ball.java : 1
 Examples/BallClient2.java : 1
@@ -531,6 +535,7 @@ Examples/StringTrouble.java : 1
 Examples/StringEquality.java : 1
 Slides/24-OODPrinciples.pdf : 1
 Slides/24-OODExample.pdf : 1
+Exam 3 Programming Fall 2018.pdf : 1
 Exam3.zip : 1
 Slides/Exam_III_Outline.pdf : 1
 https://lumen.cs.mtech.edu/~vandyne/CSCI136/01_Overview.mp4 : 1
@@ -596,6 +601,7 @@ https://katie.mtech.edu/classes/csci136/Pictures/River.png : 1
 https://katie.mtech.edu/classes/csci136/Pictures/Roland.png : 1
 https://katie.mtech.edu/classes/csci136/Pictures/William.png : 1
 https://katie.mtech.edu/classes/csci136/Slides/08-Recursion_II.pdf : 1
+https://katie.mtech.edu/classes/csci136/Slides/08-Recursion II.pptx : 1
 https://lumen.cs.mtech.edu/~vandyne/CSCI136/08_RecursionII.mp4 : 1
 https://katie.mtech.edu/classes/csci136/Examples/Mystery.py : 1
 https://katie.mtech.edu/classes/csci136/Examples/Brownian.py : 1
@@ -753,6 +759,9 @@ https://katie.mtech.edu/classes/csci136/Assignments/15_MultiFilePrograms/ : 1
 ../../assignments.php : 1
 ../../resources.php : 1
 ../../syllabus.php : 1
+Honor Code Programming.docx : 1
 ToDo.cpp : 1
+https://katie.mtech.edu/classes/csci136/Assignments/15_MultiFilePrograms/Honor Code Programming.docx : 1
 https://katie.mtech.edu/classes/csci136/Slides/Exam_III_Outline.pdf : 1
 https://lumen.cs.mtech.edu/~vandyne/ExamIIIReview.mp4 : 1
+https://katie.mtech.edu/classes/csci136/Exams/Exam 3.docx : 1
