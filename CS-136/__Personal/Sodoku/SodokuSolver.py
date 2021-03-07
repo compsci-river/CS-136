@@ -38,6 +38,7 @@ class Sodoku:
     def __init__(self,fName):
         self.tiles = [[None for i in range(9)] for j in range(9)]
         self.empty = []
+        self.running = True
         with open(fName) as f:
             for i in range(9):
                 line = f.readline().split()
@@ -89,15 +90,20 @@ class Sodoku:
         return square
 
     def win(self):
-        for i in range(9):
-            for j in range(9):
-                self.tiles[i][j].validate()
+        self.running = False
         self.draw()
-        StdDraw.show(1000000)
+        StdDraw.setPenColor(StdDraw.BLACK)
+        StdDraw.text(0.5,0.025,"FINISHED")
+        StdDraw.show(1000)
 
     def draw(self):
         StdDraw.clear()
         for i in range(10):
+            StdDraw.setPenColor(StdDraw.BLACK)
+            if i == 3 or i == 6:
+                StdDraw.setPenRadius(0.006)
+            else:
+                StdDraw.setPenRadius(0.0015)
             StdDraw.line(0.05,0.05+0.1*i,0.95,0.05+0.1*i)
             StdDraw.line(0.05+0.1*i,0.05,0.05+0.1*i,0.95)
         for i in range(9):
@@ -109,12 +115,13 @@ class Sodoku:
         if n >= len(self.empty):
             print("end")
             self.win()
+            return
         else:
             a = self.empty[n]
             x = a[0]
             y = a[1]
             poten = self.potenVals(x,y)
-            while len(poten) > 0:
+            while len(poten) > 0 and self.running:
                 self.tiles[x][y].setTestValue(poten[0])
                 self.draw()
                 self.run(n+1)
@@ -124,6 +131,7 @@ class Sodoku:
                     v = w[1]
                     self.tiles[u][v].setTestValue(None)
                 poten.pop(0)
+            return
 
 if __name__ == "__main__":
     s = Sodoku("Sodoku.txt")
