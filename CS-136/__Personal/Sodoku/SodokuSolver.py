@@ -12,21 +12,13 @@ class Tile:
             self.value = value
         self.testValue = self.value
 
-    def getValue(self):
-        return self.value
-
     def getTestValue(self):
         return self.testValue
 
     def setTestValue(self,value):
         self.testValue = value
 
-    def validate(self):
-        self.value = self.testValue
-
     def draw(self,x,y):
-        #StdDraw.setPenColor(StdDraw.WHITE)
-        #StdDraw.filledSquare(x,y,0.05)
         if self.value != None:
             StdDraw.setPenColor(StdDraw.BLACK)
             StdDraw.text(x,y,str(self.value))
@@ -113,7 +105,6 @@ class Sodoku:
 
     def run(self,n):
         if n >= len(self.empty):
-            print("end")
             self.win()
             return
         else:
