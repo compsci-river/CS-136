@@ -4,7 +4,7 @@
 #
 #Description: Crawls through a website and saves any links to a dictionary, then
 #works recursivly to run through any new links. At the end the dictionary is
-#written to a text file which is the printed to the screen
+#written to a text file which is then printed to the screen
 #
 
 import re

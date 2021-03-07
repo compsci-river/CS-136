@@ -24,7 +24,7 @@ class StackOfPositions:
     #Outputs: null
     def push(self, s):
         node = Node()
-        node.item = s;
+        node.item = s
 
         if self.first == None:
             self.first = node
