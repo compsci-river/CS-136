@@ -39,6 +39,7 @@ class Sodoku:
                     self.tiles[j][i] = Tile(val)
                     if val == 0:
                         self.empty.append([j,i])
+        self.draw()
         pass
 
     def potenVals(self,x,y):
@@ -90,6 +91,7 @@ class Sodoku:
 
     def draw(self):
         StdDraw.clear()
+        StdDraw.setFontSize(20)
         for i in range(10):
             StdDraw.setPenColor(StdDraw.BLACK)
             if i == 3 or i == 6:
@@ -114,14 +116,12 @@ class Sodoku:
             poten = self.potenVals(x,y)
             while len(poten) > 0 and self.running:
                 self.tiles[x][y].setTestValue(poten[0])
-                self.draw()
+                #self.draw()
                 self.run(n+1)
-                for i in range(n+1,len(self.empty)):
-                    w = self.empty[i]
-                    u = w[0]
-                    v = w[1]
-                    self.tiles[u][v].setTestValue(None)
-                poten.pop(0)
+                if self.running:
+                    w = self.empty[n+1]
+                    self.tiles[w[0]][w[1]].setTestValue(None)
+                    poten.pop(0)
             return
 
 if __name__ == "__main__":
