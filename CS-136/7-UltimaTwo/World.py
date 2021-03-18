@@ -51,9 +51,6 @@ class World:
         StdDraw.setFontSize(12)
         StdDraw.setPenColor(StdDraw.RED)
 
-        ##### YOUR CODE HERE #####
-        pass
-
 
     #Checks to see if the entered x,y position exists on the grid of tiles
     #Returns true if it does false if not
@@ -101,10 +98,6 @@ class World:
         self.avatar.draw()
         for m in self.mons:
             m.draw()
-        
-
-        ##### YOUR CODE HERE #####
-        pass
     
     # Light the world
     #
@@ -113,8 +106,6 @@ class World:
     #    Calls the recursive lightDFS method to continue the lighting
     # Returns the total number of tiles lit
     def light(self, x, y, r):
-
-        ##### YOUR CODE HERE #####
         return self.lightDFS(x,y,x,y,r)
 
     def dist(self,x,y,xOne,yOne):
@@ -148,9 +139,6 @@ class World:
             c += self.lightDFS(x,y,currentX-1,currentY,r)
             c += self.lightDFS(x,y,currentX+1,currentY,r)
             return c
-        
-
-        ##### YOUR CODE HERE ####
         return 0
             
     # Turn all the lit values of the tiles to a given value. Used
@@ -164,9 +152,6 @@ class World:
         for i in range(0,self.width):
             for j in range(0,self.height):
                 self.tiles[i][j].setLit(value)
-
-        ##### YOUR CODE HERE #####
-        pass
 
     def avatarAlive(self):
         if self.avatar.getHitPoints() > 0:

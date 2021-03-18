@@ -43,9 +43,6 @@ class Monster:
         self.name = l[0]
         self.timer = 5
 
-        ##### YOUR CODE HERE #####
-        pass
-
     #Gets the monster file name based on the input code, returns the name of the
     #file with the picture, I contained it in a list just in case I wanted to do
     #anything more with the input code
@@ -68,30 +65,23 @@ class Monster:
         self.hp -= int(points)
         if points > 0:
             self.timer = 0
-
-        ##### YOUR CODE HERE #####
-        pass
-
+            
     #
     # Draw this monster at its current location
     def draw(self):
         p = picture.Picture(self.name)
         x = (self.x+0.5)*Tile.SIZE
         y = (self.y+0.5)*Tile.SIZE
-        StdDraw.picture(p,x,y)
-        if self.timer < 3:
-            StdDraw.text(x,y,str(self.hp))
-
-        ##### YOUR CODE HERE #####
-        pass
+        if self.world.tiles[self.x][self.y].getLit():
+            StdDraw.picture(p,x,y)
+            if self.timer < 3:
+                StdDraw.text(x,y,str(self.hp))
 
     #
     # Get the number of hit points the monster has ramaining
     # 
     # return the number of hit points
     def getHitPoints(self):
-
-        ##### YOUR CODE HERE #####
         return self.hp
 
     #
@@ -99,8 +89,6 @@ class Monster:
     # 
     # return amount of damage monster causes
     def getDamage(self):
-
-        ##### YOUR CODE HERE #####
         return self.dmg
 
     #
@@ -108,8 +96,6 @@ class Monster:
     # 
     # return x position
     def getX(self):
-
-        ##### YOUR CODE HERE #####
         return self.x
 
     #
@@ -117,8 +103,6 @@ class Monster:
     # 
     # return y position
     def getY(self):
-
-        ##### YOUR CODE HERE #####
         return self.y
 
     #
@@ -130,12 +114,10 @@ class Monster:
         self.x = x
         self.y = y
 
-        ##### YOUR CODE HERE #####
-        pass
-
     #
     # Thread that moves the monster around periodically
     def run(self):
+        time.sleep(1)
         while self.hp > 0:
             di = random.randint(1,4)
             x = self.x
@@ -151,6 +133,3 @@ class Monster:
             self.world.monsterMove(x,y,self)
             self.timer += 1
             time.sleep(self.sleep)
-
-        ##### YOUR CODE HERE #####
-        pass

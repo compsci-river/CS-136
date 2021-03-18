@@ -80,18 +80,12 @@ class Tile:
     def isOpaque(self):
         return self.opaque
 
-        ##### YOUR CODE HERE #####
-        pass
-
     # Can the hero walk through this tile
     #
     # Returns True if the tile can be moved through,
     #    False otherwise
     def isPassable(self):
         return self.passable
-
-        ##### YOUR CODE HERE #####
-        pass
 
     #Makes it so lava can damage the player, returns 1 if the tile is lava, 0 if
     #it is any other tile
@@ -109,9 +103,6 @@ class Tile:
         if self.lit:
             p = picture.Picture(self.name)
         StdDraw.picture(p,(x+0.5)*self.SIZE,(y+0.5)*self.SIZE)
-
-        ##### YOUR CODE HERE #####
-        pass
 
 #
 # Main code for testing the Tile class

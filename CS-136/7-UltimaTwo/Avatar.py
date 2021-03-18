@@ -22,9 +22,6 @@ class Avatar :
         self.radi = torch
         self.timer = 500
 
-        ##### YOUR CODE HERE #####
-        pass
-
     # Mutator method to set the avatar to a new location
     #
     # Input parameters are the new integer x and y position
@@ -32,31 +29,22 @@ class Avatar :
         self.x = x
         self.y = y
 
-        ##### YOUR CODE HERE #####
-        pass
-
     # Accessor method
     #
     # Returns the x position of the avatar
     def getX(self):
-
-        #####YOUR CODE HERE #####
         return self.x
     
     # Accessor method
     #
     # Returns the y position of the avatar
     def getY(self):
-
-        ##### YOUR CODE HERE #####
         return self.y
     
     # Accessor method
     #
     # Returns the current radius of the torch
     def getTorchRadius(self):
-
-        ##### YOUR CODE HERE #####
         return self.radi
 
     #returns the number of hit points the player has remaining
@@ -78,9 +66,6 @@ class Avatar :
     # Increases the radius of the torch
     def increaseTorch(self):
         self.radi += 0.5
-
-        ##### YOUR CODE HERE #####
-        pass
     
     # Make our torch less powerful
     #
@@ -88,9 +73,6 @@ class Avatar :
     def decreaseTorch(self):
         if self.radi >= 2.5:
             self.radi -= 0.5
-
-        #####YOUR CODE HERE #####
-        pass
 
     # Draw the avatar
     #
@@ -103,9 +85,6 @@ class Avatar :
         StdDraw.picture(p,x,y)
         if self.timer < 100:
             StdDraw.text(x,y,str(self.hp))
-
-        ##### YOUR CODE HERE #####
-        pass
 
 # Main code to test the avatar class    
 if __name__ == "__main__":
