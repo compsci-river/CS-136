@@ -27,7 +27,7 @@ with open(filename, 'r') as file:
 # get dimensions
 w = int(lines[0])
 h = int(lines[1])
-StdDraw.setCanvasSize(w, h)
+StdDraw.setCanvasSize(768, 768)
 StdDraw.setXscale(0, w)
 StdDraw.setYscale(0, h)
 
