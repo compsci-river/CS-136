@@ -39,6 +39,7 @@ class Sodoku:
                     self.tiles[j][i] = Tile(val)
                     if val == 0:
                         self.empty.append([j,i])
+        f.close()
         self.draw()
         pass
 
