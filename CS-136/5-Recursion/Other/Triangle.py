@@ -79,5 +79,5 @@ class Triangle:
 
 if __name__ == "__main__":
     triangle = Triangle()
-    triangle.background(3,6,3)
+    triangle.background(1,6,3)
     StdDraw.show(1000)
